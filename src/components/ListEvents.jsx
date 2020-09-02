@@ -6,7 +6,6 @@ import {Link} from 'react-router-dom'
 export default function ListEvent() {
 
     const [state, setState] = useState({filter: '', events: []});
-    const filterField = useRef();
 
     useEffect(() => {
         const eventsRef = Firebase.database().ref('events');
@@ -18,7 +17,8 @@ export default function ListEvent() {
                     id: ev, ...evs[ev]
                 });
             }
-            const fltr = String(filterField.current.value).toLowerCase();
+
+            let fltr = String(state.filter).toLowerCase();
             if(!(fltr === '' || fltr === undefined || fltr === null)){
 
                 let filteredData = newState.filter(val => {
@@ -52,7 +52,7 @@ export default function ListEvent() {
 				
             <h2>Events List</h2>
             <section className ="bar">
-                <input type="text" placeholder="search user" ref={filterField} onChange={e =>{setState({...state, filter: e.target.value});}}/>
+                <input type="text" placeholder="search user" onChange={e =>{setState({...state, filter: e.target.value});}}/>
                 <Link to="/create" className="newm" style={{margin: 4}}>Add Event</Link>
             </section>
             <div className="container">
