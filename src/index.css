@@ -1,13 +1,270 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+
+*{
+	box-sizing: border-box;
+	color: #bbb;
+	font-family: monospace;
+}
+body{
+	padding: 0;
+	margin: 0;
+	--gap1 : 4px;
+	--gap2 : 8px;
+
+	--colorback : #ddd;
+	background:  var(--colorback);
+	width: 100vw;
+	overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+section{
+	margin: 2vh auto;
+	max-width: 900px;
+	padding: var(--gap2);
+	background: var(--colorback);
+	box-shadow: 20px 20px 60px #b6b5b5,
+				-20px -20px 60px #fff;
+	border-radius: 10px;
 }
+h1{
+	margin: 2rem auto;
+	text-align: center;
+	text-shadow: 3px 3px 10px #888787,
+	-3px -3px 10px #fff;
+	color:  var(--colorback);
+	font-size: 5rem;
+	letter-spacing: .2rem;
+	user-select: none;
+}
+h2{
+	margin: 2rem auto;
+	text-align: center;
+	text-shadow: 2px 2px 8px #888787,
+	-2px -2px 8px #fff;
+	color:  var(--colorback);
+	font-size: 4rem;
+	letter-spacing: .2rem;
+	user-select: none;
+}
+.createEventFields {
+	display: grid;
+	grid-template-columns: 1fr 1fr ;
+	gap: 16px;
+	grid-template-areas:
+	"title title"
+	"date time"
+	"venue fees"
+	"desc desc"
+	"desc desc";
+	border: none;
+	padding: 16px;
+}
+.ceTitle {
+	grid-area: title;
+}
+.ceDate {
+	grid-area: date;
+}
+.ceTime {
+	grid-area: time;
+}
+.ceVenue {
+	grid-area: venue;
+}
+.ceDesc {
+	grid-area: desc;
+}
+.ceFees {
+	grid-area: fees;
+}
+
+input, textarea {
+	color:#1f9ff5;
+	font-weight: bold;
+	text-shadow: 0px 0px 3px  #3a96d3;
+	width: 100%;
+	font-size: 1.4rem;
+	padding: 1rem 2rem;
+	outline: none;
+	border: none;
+	border-radius: 10px;
+	background: var(--colorback);
+	box-shadow: inset 4px 4px 8px #b8b5b5f6,
+				inset -4px -4px 8px #fff;
+			
+			
+}
+input::placeholder, textarea::placeholder{
+font-size: 1.4rem;
+letter-spacing: .3rem;
+color: #999;
+text-shadow: none;
+
+}
+.newm{
+	cursor: pointer;
+	outline: none;
+	display: block;
+	border: none;
+	border-radius: 30px;
+	width: 20rem;
+	height: 4rem;
+	margin: 1rem auto;
+	font-size: 2rem;
+	background: linear-gradient(145deg,#eee, #ffffff);
+	background: var(--colorback);
+	box-shadow:  8px 8px 8px #c4c0c0f6,
+				-8px -8px 8px #eee;	
+}
+input[type="file"]::-webkit-file-upload-button  {
+	content: "add image";
+	font-size: 1.4rem;
+	padding: 8px;
+	color:#aaa;
+	cursor: pointer;
+	outline: none;
+	display: block;
+	border: none;
+	border-radius: 30px;
+	background: linear-gradient(145deg,#eee, #ffffff);
+	background: var(--colorback);
+	box-shadow:  8px 8px 8px #c4c0c0f6,
+				-8px -8px 8px #eee;
+}
+
+.newm:active,  input[type="file"]::-webkit-file-upload-button:active {
+color: #999;
+background: var(--colorback);
+box-shadow: inset 8px 8px 8px #c4c0c0f6,
+			inset -8px -8px 8px #eee;
+}
+a {
+	text-align: center;
+	text-decoration: none;
+	padding-top: 10px;
+}
+.loader {
+	border: 16px solid #ddd;
+	border-radius: 50%;
+	border-top: 16px solid #3498db;
+	width: 60px;
+	height: 60px;
+	margin: 6px;
+	-webkit-animation: spin 2s linear infinite; /* Safari */
+	animation: spin 2s linear infinite;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+  }
+
+
+.container {
+	max-width: 1200px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 18px;
+	padding: 10px;
+  }
+
+.card {
+	margin: 4px ;
+	align-self: center;
+	align-content: center;
+	border-radius: 20px;
+	box-shadow: 
+		inset 0 0 15px rgba(55, 84, 170,0),
+		inset 0 0 20px rgba(255, 255, 255,0),
+		7px 7px 15px rgba(55, 84, 170,.15),
+		-7px -7px 20px rgba(255, 255, 255,1),
+		inset 0px 0px 4px rgba(255, 255, 255,.2);
+	overflow: hidden;
+	
+}
+.card > .text {
+	padding: 10px;
+}
+.card > .text > h1 {
+	color: #666;
+	font-size: 2rem;
+	font-weight: 600;
+	text-align: left;
+	margin: 5px;
+}
+.card > .text > h2 {
+	color: #3498db;
+	font-size: 1.2rem;
+	font-weight: lighter;
+	margin: 6px;
+	text-align: left;
+	letter-spacing: 0;
+}
+.card > .text > p {
+	color: #666;
+	margin-top: 1rem;
+	font-size: 1.4rem;
+	line-height: 1.45em;
+	height: 100px;
+	margin-bottom: 0px;
+  }
+.cardImage {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+}
+.ciPlaceholder{
+	width: 100%;
+	height: 200px;
+	background-color: #3498db;
+}
+
+.bar {
+	display: flex;
+	width: 90%;
+	gap: 20px;
+}
+
+
+
+@media only screen and (max-width: 900px) {
+	.container {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+	h2{
+		font-size: 3rem;
+	}
+	.createEventFields {
+		display: grid;
+		grid-template-columns: 1fr ;
+		gap: 16px;
+		grid-template-areas:
+		"title"
+		"date"
+		"time"
+		"venue"
+		"fees"
+		"desc"
+		"desc";
+		border: none;
+		padding: 16px;
+	}
+	.container {
+		grid-template-columns: 1fr;
+	}
+	.bar {
+	flex-direction: column;
+	}
+  }
